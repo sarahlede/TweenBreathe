@@ -1,18 +1,27 @@
-let y = 0;
-let speed = 3;
+let percent = 0;
+let smallestSize = 100;
+let speed = .7;
+let siz;
 
 function setup() {
-  createCanvas(400, 400);
+  createCanvas(800 ,800);
+  rectMode(CENTER);
 }
 
 function draw() {
   background(125);
 
-  ellipse(width/2, y, 50);
+  siz = map2(percent, 0, 100, smallestSize*5, 100*5, SINUSOIDAL, BOTH);
+  ellipse(width/2, height/2, siz, siz);
 
-  y += speed;
-  if (y > height || y < 0) {
-    speed *= -1;
+  percent += speed;
+  if (percent >= 100) { // got to the largest size
+    smallestSize -= 20; // subtract from the smallest size 
   }
+  if (smallestSize < 0 ) { // the smallest size has gotten as small as it should get
+    smallestSize = 100; // start over
+  }
+
+  if (percent < 0 || percent > 100) speed *= -1;
 
 }
