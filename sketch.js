@@ -4,7 +4,7 @@ let speed = .7;
 let siz;
 
 function setup() {
-  createCanvas(800 ,800);
+  createCanvas(1450, 822);
   rectMode(CENTER);
 }
 
